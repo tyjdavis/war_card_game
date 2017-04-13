@@ -1,7 +1,7 @@
 /*
 Each of two players gets 26 cards. -done
 
-In one round of play, each player shows the first card from his/her hand.
+In one round of play, each player shows the first card from his/her hand. -done
 
 The player with the high card wins the round, and puts both cards at the bottom of his/her hand.
 
@@ -36,10 +36,24 @@ describe('War', function () {
       assert.equal(game.playerTwoDeck.length, 26)
     })
     describe('#showCard', function (){
-      it('each player shows first card', function (){
+      it('playerOne shows first card', function (){
         let game = new War('Tyler', 'Idiot');
-        
+        let showCard = game.showCard1();
+        assert.equal(showCard, "Ace");
       })
+      it('playerTwo shows first card', function (){
+        let game = new War('Tyler', 'Idiot');
+        let showCard = game.showCard2();
+        assert.equal(showCard, "2");
+      })
+      describe('#whoWins', function(){
+        it('player with highest card wins', function(){
+          let game = new War('Tyler', 'Idiot');
+
+          assert.equal()
+        })
+      })
+    //player with highest card wins first round.
     })
   })
 })
