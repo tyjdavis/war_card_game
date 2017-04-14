@@ -26,46 +26,55 @@ describe('War', function () {
     game = new War('Tyler', 'Idiot');
   })
   it('has two players', function() {
+    game.gameStart();
     assert.equal(game.playerOne, 'Tyler');
     assert.equal(game.playerTwo, 'Idiot');
   })
   describe('#gameStart()', function (){
     it('playerOne has 26 cards', function (){
+      game.gameStart();
       assert.equal(game.playerOneDeck.length, 26);
     })
     it('playerTwo has 26 cards', function (){
+      game.gameStart();
       assert.equal(game.playerTwoDeck.length, 26)
     })
     describe('#getRawValues()', function(){
       it('face cards have raw values', function(){
+        game.gameStart();
         let card = new Card('King', 'Clubs');
         assert.equal(card.rawValue, 13)
       })
     })
     describe('#showCards()', function (){
       it('playerOne shows first card', function (){
+        game.gameStart();
         game.showCard1();
-        assert(game.showCard1());
+        assert.equal(game.table.length == 1, true);
       })
       it('playerTwo shows first card', function (){
+        game.gameStart();
         game.showCard2();
-        assert(game.showCard2());
+        assert.equal(game.table.length == 1, true);
       })
     })
     describe('#whoWins()', function(){
       it('playerOne can win', function(){
+        game.gameStart();
         game.playerOneDeck[0].rawValue = 10;
         game.playerTwoDeck[0].rawValue = 2;
         game.whoWins();
         assert.equal(game.whoWins(), "Player one wins")
       })
       it('playerTwo can win', function (){
+        game.gameStart();
         game.playerOneDeck[0].rawValue = 2;
         game.playerTwoDeck[0].rawValue = 10;
         game.whoWins();
         assert.equal(game.whoWins(), "Player two wins")
       })
       it('a War can occur', function () {
+        game.gameStart();
         game.playerOneDeck[0].rawValue = 10;
         game.playerTwoDeck[0].rawValue = 10;
         game.whoWins();
