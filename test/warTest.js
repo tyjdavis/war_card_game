@@ -5,7 +5,7 @@ In one round of play, each player shows the first card from his/her hand. -done
 
 The player with the high card wins the round, and puts both cards at the bottom of his/her hand.
 
-If both cards have the same value, "war" is declared.
+If both cards have the same value, "war" is declared. - done
 Each player places a second card face down on top of the first, and then a third, face up, on top of the second. The player with the high third card wins the round, and puts all six cards at the bottom of his/her hand. If the third cards tie, continue with another war.
 
 The winner is the player who ends up with all of the cards.
@@ -35,36 +35,47 @@ describe('War', function () {
       let game = new War('Tyler', 'Idiot');
       assert.equal(game.playerTwoDeck.length, 26)
     })
-    describe('#showCard', function (){
+    describe('#getRawValues()', function(){
+      it('face cards have raw values', function(){
+        let card = new Card('King', 'Clubs');
+        assert.equal(card.rawValue, 13)
+      })
+    })
+    describe('#showCards()', function (){
       it('playerOne shows first card', function (){
         let game = new War('Tyler', 'Idiot');
         let showCard = game.showCard1();
         assert(showCard);
-        console.log(showCard);
+        //console.log(showCard);
       })
       it('playerTwo shows first card', function (){
         let game = new War('Tyler', 'Idiot');
         let showCard = game.showCard2();
         assert(showCard);
-        console.log(showCard);
-      })
-    })
-    describe('#getRawValue()', function(){
-      it('cards have raw values', function(){
-        let card = new Card('King', 'Clubs');
-        assert.equal(card.rawValue, 13)
+        //console.log(showCard);
       })
     })
     describe('#whoWins()', function(){
-      it('a player can win', function(){
+      it('playerOne can win', function(){
         let game = new War('Tyler', 'Idiot');
+        game.playerOneDeck[0].rawValue = 10;
+        game.playerTwoDeck[0].rawValue = 2;
         let whoWins = game.whoWins();
-        assert.equal(typeof whoWins, "string")
+        assert.equal(whoWins, "Player one wins")
       })
-    })
-    describe('#warTime()', function (){
-      it('cards can be the same', function (){
+      it('playerTwo can win', function (){
         let game = new War('Tyler', 'Idiot');
+        game.playerOneDeck[0].rawValue = 2;
+        game.playerTwoDeck[0].rawValue = 10;
+        let whoWins = game.whoWins();
+        assert.equal(whoWins, "Player two wins")
+      })
+      it('a War can occur', function () {
+        let game = new War('Tyler', 'Idiot');
+        game.playerOneDeck[0].rawValue = 10;
+        game.playerTwoDeck[0].rawValue = 10;
+        let whoWins = game.whoWins();
+        assert.equal(whoWins, "War!")
       })
     })
   })
