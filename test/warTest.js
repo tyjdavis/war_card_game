@@ -39,7 +39,7 @@ describe('War', function () {
       it('playerOne shows first card', function (){
         let game = new War('Tyler', 'Idiot');
         let showCard = game.showCard1();
-        assert.equal(showCard, showCard);
+        assert(showCard);
         console.log(showCard);
       })
       it('playerTwo shows first card', function (){
@@ -49,68 +49,23 @@ describe('War', function () {
         console.log(showCard);
       })
     })
+    describe('#getRawValue()', function(){
+      it('cards have raw values', function(){
+        let card = new Card('King', 'Clubs');
+        assert.equal(card.rawValue, 13)
+      })
+    })
+    describe('#whoWins()', function(){
+      it('a player can win', function(){
+        let game = new War('Tyler', 'Idiot');
+        let whoWins = game.whoWins();
+        assert.equal(typeof whoWins, "string")
+      })
+    })
+    describe('#warTime()', function (){
+      it('cards can be the same', function (){
+        let game = new War('Tyler', 'Idiot');
+      })
+    })
   })
 })
-
-
-
-
-
-
-
-
-
-      // describe('#whoWins', function(){
-      //   it('player one wins', function(){
-      //     let game = new War('Tyler', 'Idiot');
-      //     let whoWins = game.whoWins();
-      //     let result = "player one wins"
-      //     assert.equal(whoWins, result)
-      //   })
-      //   it('player two wins', function(){
-      //     let game = new War('Tyler', 'Idiot');
-      //     let whoWins = game.whoWins();
-      //     let result = "player two wins"
-      //     assert.equal(whoWins, result)
-      //   })
-      //   it('war!', function(){
-      //     let game = new War('Tyler', 'Idiot');
-      //     let whoWins = game.whoWins();
-      //     let result = "war!"
-      //     assert.equal(whoWins, result)
-      //   })
-      //})
-
-
-
-
-
-
-
-
-
-
-//
-// var assert = require('assert');
-// var Deck = require('../lib/MakeDeck');
-// var Card = require('../lib/Card');
-//
-// describe('Deck', function() {
-//   describe('MakeDeck()', function() {
-//     it('should make a deck with a size equal to suits * values', function() {
-//       assert.equal(Deck.MakeDeck(2,3).length, 6);
-//       assert.equal(Deck.MakeDeck(2,4).length, 8);
-//     });
-//   });
-// });
-//
-//
-// describe('Card', function() {
-//   describe('Constructor', function() {
-//     it('should make a new card with predicted suit and rank.', function() {
-//       var newCard = new Card(1,2)
-//       assert.equal(newCard.suit, 1);
-//       assert.equal(newCard.rank, 2);
-//     });
-//   });
-// });
