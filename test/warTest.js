@@ -7,7 +7,8 @@ The player with the high card wins the round, and puts both cards at the bottom 
 
 If both cards have the same value, "war" is declared. - done
 
-Each player places a second card face down on top of the first, and then a third, face up, on top of the second. The player with the high third card wins the round, and puts all six cards at the bottom of his/her hand. If the third cards tie, continue with another war.
+Each player places a second card face down on top of the first, and then a third, face up, on top of the second. -done
+The player with the high third card wins the round, and puts all six cards at the bottom of his/her hand. If the third cards tie, continue with another war.-done
 
 The winner is the player who ends up with all of the cards.
 */
@@ -93,7 +94,14 @@ describe('War', function () {
         game.table[0].rawValue = 10;
         game.table[1].rawValue = 10;
         game.gameOn();
-        assert.equal(game.playerOneDeck.length, 27);
+        assert.equal(game.playerOneDeck.length, 31);
+      })
+      it('gameover', function (){
+        game.gameStart();
+        game.showCards();
+        game.gameOn();
+        result = "game over"
+        assert.equal(game.playerOneDeck.length, 52);
       })
     })
   })
